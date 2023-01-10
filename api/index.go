@@ -1,10 +1,13 @@
 package handler
 
 import (
-  "fmt"
-  "net/http"
+	"fmt"
+	"net/http"
+
+	"github.com/golang-module/carbon/v2"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
+	now := carbon.Now().ToString()
+	fmt.Fprintf(w, "<h1>Hello from Go! %s</h1>", now)
 }
